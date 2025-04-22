@@ -51,7 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
         totalPrice += item.price;
         const cartItem = document.createElement("div");
         cartItem.innerHTML = `
-        ${item.name} - ${item.price.toFixed(2)} din `;
+        ${item.name} - ${item.price.toFixed(
+          2
+        )} din <button id="delete">DELETE</button>`;
+        cartItem.querySelector("#delete").addEventListener("click", () => {
+          cart.splice(index, 1);
+          renderCart();
+          if (cart.length === 0) {
+            totalPriceDisplay.textContent = 0;
+          }
+        });
         CartItems.appendChild(cartItem);
         totalPriceDisplay.textContent = `${totalPrice.toFixed(2)}`;
       });
@@ -60,9 +69,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   checkoutBtn.addEventListener("click", () => {
-    cart.length = 0;
-    alert("KUPLJENO");
-    renderCart();
-    totalPriceDisplay.textContent = 0;
+    if (cart.length === 0) {
+      alert("Korpa je prazna, ubacite proizvod!");
+      return;
+    } else {
+      cart.length = 0;
+      alert("KUPLJENO");
+      renderCart();
+      totalPriceDisplay.textContent = 0;
+    }
   });
+
+  // checkoutBtn.addEventListener("click", () => {
+  //   cart.length = 0;
+  //   alert("KUPLJENO");
+  //   renderCart();
+  //   totalPriceDisplay.textContent = 0;
+  // }); ovo je bilo pre i moglo je da se kupi a da nema proizvoda u korpi
 });

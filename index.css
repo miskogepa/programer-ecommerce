@@ -55,6 +55,19 @@
   .product button:hover {
     background-color: #3700b3;
   }
+
+  #delete{ background-color: #ea0c00;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 120px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;}
+
+    #delete:hover{
+      background-color: #b38300;
+    }
   
   #cart-items {
     margin-bottom: 20px;
