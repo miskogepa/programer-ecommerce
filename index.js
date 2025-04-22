@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         totalPrice += item.price;
         const cartItem = document.createElement("div");
         cartItem.innerHTML = `
-        ${item.name} - ${item.price.toFixed(2)} din `;
+        ${item.name} - ${item.price.toFixed(2)} din <button id="delete">DELETE</button>`;
         CartItems.appendChild(cartItem);
         totalPriceDisplay.textContent = `${totalPrice.toFixed(2)}`;
       });
