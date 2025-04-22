@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: 4, name: "Proizvod 4", price: 25.99 },
     { id: 5, name: "Proizvod 5", price: 30.99 },
   ];
+  
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -15,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartTotalMessage = document.getElementById("cart-total");
   const totalPriceDisplay = document.getElementById("total-price");
   const checkoutBtn = document.getElementById("checkout-btn");
-
+  if (cart.length > 0) {
+    renderCart();}
   // Function to render products
   products.forEach((product) => {
     const productDiv = document.createElement("div");
