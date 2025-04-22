@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     } else {
       cart.length = 0;
-      alert("KUPLJENO");
+      alert(`HVALA NA KUPOVINI! Ukupno: ${totalPriceDisplay.textContent} din`);
       renderCart();
       totalPriceDisplay.textContent = 0;
     }
