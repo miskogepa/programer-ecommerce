@@ -51,7 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
         totalPrice += item.price;
         const cartItem = document.createElement("div");
         cartItem.innerHTML = `
-        ${item.name} - ${item.price.toFixed(2)} din <button id="delete">DELETE</button>`;
+        ${item.name} - ${item.price.toFixed(
+          2
+        )} din <button id="delete">DELETE</button>`;
+        cartItem.querySelector("#delete").addEventListener("click", () => {
+          cart.splice(index, 1);
+          renderCart();
+          if (cart.length === 0) {
+            totalPriceDisplay.textContent = 0;
+          }
+        });
         CartItems.appendChild(cartItem);
         totalPriceDisplay.textContent = `${totalPrice.toFixed(2)}`;
       });
