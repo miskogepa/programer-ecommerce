@@ -69,9 +69,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   checkoutBtn.addEventListener("click", () => {
-    cart.length = 0;
-    alert("KUPLJENO");
-    renderCart();
-    totalPriceDisplay.textContent = 0;
+    if (cart.length === 0) {
+      alert("Korpa je prazna, ubacite proizvod!");
+      return;
+    } else {
+      cart.length = 0;
+      alert("KUPLJENO");
+      renderCart();
+      totalPriceDisplay.textContent = 0;
+    }
   });
+
+  // checkoutBtn.addEventListener("click", () => {
+  //   cart.length = 0;
+  //   alert("KUPLJENO");
+  //   renderCart();
+  //   totalPriceDisplay.textContent = 0;
+  // }); ovo je bilo pre i moglo je da se kupi a da nema proizvoda u korpi
 });
