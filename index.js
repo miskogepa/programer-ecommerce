@@ -59,4 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
       emptyCartMessage.classList.remove("hidden");
     }
   }
+  checkoutBtn.addEventListener("click", () => {
+    cart.length = 0;
+    alert("KUPLJENO");
+    renderCart();
+    totalPriceDisplay.textContent = 0;
+  });
 });
