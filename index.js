@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: 5, name: "Proizvod 5", price: 30.99 },
   ];
 
-  const cart = [];
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const ProductList = document.getElementById("product-list");
   const CartItems = document.getElementById("cart-items");
@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function addToCart(product) {
     cart.push(product);
+    saveCartToLocalStorage();
     renderCart();
   }
 
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         )} din <button id="delete">DELETE</button>`;
         cartItem.querySelector("#delete").addEventListener("click", () => {
           cart.splice(index, 1);
+          saveCartToLocalStorage();
           renderCart();
           if (cart.length === 0) {
             totalPriceDisplay.textContent = 0;
@@ -74,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     } else {
       cart.length = 0;
+      saveCartToLocalStorage();
       alert(`HVALA NA KUPOVINI! Ukupno: ${totalPriceDisplay.textContent} din`);
       renderCart();
       totalPriceDisplay.textContent = 0;
@@ -86,4 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //   renderCart();
   //   totalPriceDisplay.textContent = 0;
   // }); ovo je bilo pre i moglo je da se kupi a da nema proizvoda u korpi
+
+  //funkcija za pamcenje u local storage
+  function saveCartToLocalStorage() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
 });
